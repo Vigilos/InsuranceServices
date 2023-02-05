@@ -9,7 +9,11 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
 </head>
 <body>
-    <p>Test text: Hi there!</p>
+    <form method=POST action="{% url 'home' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button>Submit</button>
+    </form>
     <script type="text/javascript" src="{% static '/js/script.js' %}"></script>
 </body>
 </html>
