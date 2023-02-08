@@ -10,11 +10,28 @@ from .forms import EmailForm
 
 load_dotenv()
 
-# def index_view(request):
-#     return render(request, "index.html")
+
+def home(request):
+    return render(request, "index.html")
 
 
-def form_view(request):
+def about(request):
+    return render(request, "about.html")
+
+
+def product1(request):
+    return render(request, "product1.html")
+
+
+def product2(request):
+    return render(request, "product2.html")
+
+
+def product3(request):
+    return render(request, "product3.html")
+
+
+def send_email(request):
     if request.POST:
         form = EmailForm(request.POST)
         print(request.POST)
@@ -40,9 +57,9 @@ def form_view(request):
                 smtp.starttls()
                 smtp.login(os.getenv('USER_NAME'), os.getenv('PASS'))
                 smtp.send_message(email)
-                print('Email sent!')
 
         except Exception as err:
             print('Something went wrong with send_mail. Error: ' + str(err))
 
-    return render(request, 'index.html', {'form': EmailForm})
+    return 'Email sent successfully!'
+    # return render(request, 'index.html', {'form': EmailForm})
