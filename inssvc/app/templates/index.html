@@ -1,54 +1,45 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insurance Services</title>
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"> {% endcomment %}
-</head>
-<body>
-     
-    <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
+  
+{% block content %}
+  <img class="img-fluid w-100" src="{% static '/images/ocean-1-bw-1.jpg' %}" alt="">
+
+  <div class="container-fluid p-5 text-black text-center">
+      <h1>My First Bootstrap Page</h1>
+      <p>Resize this responsive page to see the effect!</p>
+  </div>
+    
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Column 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
       </div>
-      
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-          </div>
-          <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-          </div>
-          <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-          </div>
-        </div>
+      <div class="col-sm-4">
+        <h3>Column 2</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
       </div>
+      <div class="col-sm-4">
+        <h3>Column 3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div class="col-sm-4" id="contact-us">
+      <h3>Contact Us</h3>
+      <p>Form goes here</p>
+    </div>
+  </div>
 
-    <form method=POST action="{% url 'home' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-    <button>Submit</button>
-    </form>
+  <form method=POST action="{% url 'home' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form}}
+  <button>Submit</button>
+  </form>
 
-    {% block content %}
-    {% endblock %}
-
-    {% comment %} <script type="text/javascript" src="{% static '/js/script.js' %}"></script> {% endcomment %}
-</body>
-</html>
+  {% endblock content %}
 
 

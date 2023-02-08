@@ -192,13 +192,34 @@ BOOTSTRAP5 = {
 # *** SECURITY SETTINGS ***
 
 # * Settings from django-csp *
-CSP_DEFAULT_SRC = ("'self'",)
+CSP_DEFAULT_SRC = (
+    "'self'",
+    "https://stackpath.bootstrapcdn.com",
+    "https://cdn.jsdelivr.net"
+)
 CSP_STYLE_SRC = (
-    "'self'", "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css")
+    "'self'",
+    "https://stackpath.bootstrapcdn.com",
+    "https://cdn.jsdelivr.net"
+)
 CSP_SCRIPT_SRC = (
-    "'self'", "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js")
-CSP_IMG_SRC = ("'self'",)
-CSP_FONT_SRC = ("'self'",)
+    "'self'",
+    "https://stackpath.bootstrapcdn.com",
+    "https://via.placeholder.com",
+    "https://cdn.jsdelivr.net"
+)
+CSP_IMG_SRC = (
+    "'self'",
+    "https://via.placeholder.com",
+    "https://stackpath.bootstrapcdn.com",
+    "https://cdn.jsdelivr.net",
+    "data:"
+)
+CSP_FONT_SRC = (
+    "'self'",
+    "https://stackpath.bootstrapcdn.com",
+    "https://cdn.jsdelivr.net"
+)
 
 # * After setting up HTTPS on server, uncomment the following *
 # CSRF_COOKIE_SECURE = True
