@@ -2,3 +2,16 @@
   color: black;
   font-weight: bold;
 }
+#main-paragraph {
+  font-size: larger;
+  font-weight: 500;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+}
+footer h4 {
+  font-size: large;
+  font-weight: bold;
+}
