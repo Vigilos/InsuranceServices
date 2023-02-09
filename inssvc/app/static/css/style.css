@@ -6,12 +6,24 @@
   font-size: larger;
   font-weight: 500;
 }
-footer {
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+#content {
+  padding-bottom: 165px;    /* Footer height */
+}
+#footer {
   position: absolute;
   bottom: 0;
-  height: 100px;
+  width: 100%;
+  height: 165px;
 }
-footer h4 {
+#footer h4 {
   font-size: large;
   font-weight: bold;
+}
+#copyright p {
+  color: black;
+  font-size: smaller;
 }
