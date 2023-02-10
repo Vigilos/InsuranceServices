@@ -1,6 +1,13 @@
 #get-quote-link {
-  color: black;
+  background-color: #E65002;
+  color: #ffffff;
   font-weight: bold;
+}
+.bg-color {
+  background-color: #f8a839;
+}
+.navbar a {
+  color: #003B4A;
 }
 #main-paragraph {
   font-size: larger;
@@ -22,8 +29,12 @@
 #footer h4 {
   font-size: large;
   font-weight: bold;
+  color: #003B4A;
 }
-#copyright p {
-  color: black;
+#footer a {
+  color: #003B4A;
+}
+.copyright{
+  color: #fef5ed;
   font-size: smaller;
 }
