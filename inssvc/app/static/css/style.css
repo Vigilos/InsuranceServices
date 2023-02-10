@@ -7,7 +7,11 @@
   background-color: #f8a839;
 }
 .navbar a {
-  color: #003B4A;
+  color: #434343;
+}
+#hero-text {  
+  background-color: #525252;
+  color: #ffffff;
 }
 #main-paragraph {
   font-size: larger;
@@ -29,10 +33,10 @@
 #footer h4 {
   font-size: large;
   font-weight: bold;
-  color: #003B4A;
+  color: #434343;
 }
 #footer a {
-  color: #003B4A;
+  color: #434343;
 }
 .copyright{
   color: #fef5ed;
