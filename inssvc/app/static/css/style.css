@@ -1,3 +1,21 @@
+body {
+  margin: 0px;
+}
+.center-aligned {
+  display: box;
+  display: flex;
+  box-align: center;
+  align-items: start;
+  box-pack: center;
+  justify-content: start;
+
+}
+.background-image {
+  position: relative;
+}
+.text {
+  position: absolute;
+}
 #get-quote-link {
   color: black;
   font-weight: bold;
