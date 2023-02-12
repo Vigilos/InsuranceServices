@@ -6,6 +6,13 @@
 .bg-color {
   background-color: #f8a839;
 }
+.bg-card-color {
+  background-color: #f1ece4;
+}
+.card-size {
+  width: 250px;
+  height: 250px
+}
 .navbar a {
   color: #434343;
 }
