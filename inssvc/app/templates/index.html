@@ -1,32 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
-  
-{% block content %}
-  <img class="img-fluid w-100" src="{% static '/images/ocean-1-bw-1.jpg' %}" alt="">
 
-  <div class="container-fluid p-5 text-black text-center">
-      <h1>My First Bootstrap Page</h1>
-      <p>Resize this responsive page to see the effect!</p>
+{% block content %}
+  <div class="d-flex justify-content-start align-items-start">
+    <img class="img-fluid w-100 position-relative" src="{% static '/images/ocean-1-bw-1.jpg' %}" alt="">
+    <div class="text m-2 m-sm-5 position-absolute bg-opacity-50">
+      <p class="p-4 shadow rounded" id="hero-text">EXCITING INSURANCE SLOGAN HERE</p></div>
+  </div>
+
+  <div class="container-fluid pt-4 px-5 text-black text-left">
+      <p id="main-paragraph">&emsp;Here will go a short parragraph about what you offer and why a client should go with you. The hero image grabs there attention and then this paragraph should hook them into continuing on the website. This paragraph should only be a few sentences, so as not to lose their interest.</p>
   </div>
     
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-sm-4">
-        <h3>Column 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-      </div>
-      <div class="col-sm-4">
-        <h3>Column 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-      </div>
-      <div class="col-sm-4">
-        <h3>Column 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+  <div class="d-flex flex-wrap flex-sm-row justify-content-around">
+
+    <div class="card m-3 bg-card-color text-dark border-dark card-size">
+      <div class="card-body">
+        <h5 class="card-title">Product 1</h5>
+        <p class="card-text">Short description of the product, with a hook to get them to want more info or request a quote.</p>
+        <a href="{% url 'product1' %}" class="card-link text-primary">Learn more...</a>
       </div>
     </div>
+    <div class="card m-3 bg-card-color text-dark border-dark card-size">
+      <div class="card-body">
+        <h5 class="card-title">Product 2</h5>
+        <p class="card-text">Short description of the product, with a hook to get them to want more info or request a quote.</p>
+        <a href="{% url 'product2' %}" class="card-link text-primary">Learn more...</a>
+      </div>
+    </div>
+    <div class="card m-3 bg-card-color text-dark border-dark card-size">
+      <div class="card-body">
+        <h5 class="card-title">Product 3</h5>
+        <p class="card-text">Short description of the product, with a hook to get them to want more info or request a quote.</p>
+        <a href="{% url 'product3' %}" class="card-link text-primary">Learn more...</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <div class="col-sm-4" id="contact-us">
       <h3>Contact Us</h3>

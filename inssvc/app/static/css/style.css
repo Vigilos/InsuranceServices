@@ -1,4 +1,52 @@
 #get-quote-link {
-  color: black;
+  background-color: #E65002;
+  color: #ffffff;
   font-weight: bold;
+}
+.bg-color {
+  background-color: #f8a839;
+}
+.bg-card-color {
+  background-color: #f1ece4;
+}
+.card-size {
+  width: 250px;
+  height: 250px
+}
+.navbar a {
+  color: #434343;
+}
+#hero-text {  
+  background-color: #525252;
+  color: #ffffff;
+  opacity: 0.75;
+}
+#main-paragraph {
+  font-size: larger;
+  font-weight: 500;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+#content {
+  padding-bottom: 165px;    /* Footer height */
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 165px;
+}
+#footer h4 {
+  font-size: large;
+  font-weight: bold;
+  color: #434343;
+}
+#footer a {
+  color: #434343;
+}
+.copyright{
+  color: #fef5ed;
+  font-size: smaller;
 }
