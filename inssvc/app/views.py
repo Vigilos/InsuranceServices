@@ -12,7 +12,20 @@ load_dotenv()
 
 
 def home(request):
-    return render(request, "index.html")
+    if request.POST:
+        form = EmailForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            print('POST successful - Form validated!')
+            return render(request, 'index.html', {'form': EmailForm})
+        else:
+            print('Invalid entries on form! Error: ' +
+                  str(form.errors.as_json()))
+            return render(request, 'index.html', {'form': EmailForm})
+    else:
+        form = EmailForm()
+        return render(request, 'index.html', {'form': EmailForm})
+    # return render(request, "index.html")
 
 
 def about(request):
@@ -32,11 +45,10 @@ def product3(request):
 
 
 def send_email(request):
-    if request.POST:
-        form = EmailForm(request.POST)
-        print(request.POST)
-        if form.is_valid():
-            print('POST successful!')
+    form = EmailForm(request)
+    print(request)
+    if form.is_valid():
+        print('POST successful - Form validated!')
 
         try:
             file_path = Path(__file__).parent.resolve()
@@ -48,18 +60,19 @@ def send_email(request):
             email['subject'] = "From Contact Us Form"
 
             date_time = timezone.localtime().strftime("%m/%d/%Y %H:%M:%S (PT)")
-            token, name, email_address, message = request.POST.values()
+            token, name, email_address, message = request.values()
             email.set_content(html.substitute(name=name, email=email_address,
                                               message=message, sent=date_time), 'html')
-
-            with smtplib.SMTP(host='encore.websitewelcome.com', port=587) as smtp:
+            with smtplib.SMTP_SSL(host='mail.knightskeep.com', port=465, timeout=30) as smtp:
                 smtp.ehlo()
-                smtp.starttls()
                 smtp.login(os.getenv('USER_NAME'), os.getenv('PASS'))
                 smtp.send_message(email)
 
-        except Exception as err:
-            print('Something went wrong with send_mail. Error: ' + str(err))
+            return 'Email sent successfully!'
 
-    return 'Email sent successfully!'
+        except Exception as err:
+            return ('Something went wrong with send_mail. Error: ' + str(err))
+    else:
+        return ('Something went wrong with send_mail. Error: ' + str(form.errors.as_json()))
+
     # return render(request, 'index.html', {'form': EmailForm})
