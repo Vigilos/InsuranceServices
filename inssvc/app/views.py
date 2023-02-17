@@ -5,6 +5,7 @@ from string import Template
 import os
 from django.utils import timezone
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from dotenv import load_dotenv
 from .forms import EmailForm
 
@@ -12,20 +13,19 @@ load_dotenv()
 
 
 def home(request):
-    if request.POST:
-        form = EmailForm(request.POST)
+    if request.method == "POST" or None:
+        form = EmailForm(request.POST or None)
         print(request.POST)
         if form.is_valid():
             print('POST successful - Form validated!')
-            return render(request, 'index.html', {'form': EmailForm})
+            return HttpResponseRedirect('/')
         else:
             print('Invalid entries on form! Error: ' +
                   str(form.errors.as_json()))
-            return render(request, 'index.html', {'form': EmailForm})
+            return render(request, 'index.html', {'form': form})
     else:
         form = EmailForm()
-        return render(request, 'index.html', {'form': EmailForm})
-    # return render(request, "index.html")
+        return render(request, 'index.html', {'form': form})
 
 
 def about(request):
