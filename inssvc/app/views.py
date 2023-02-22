@@ -6,6 +6,7 @@ import os
 from django.utils import timezone
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from dotenv import load_dotenv
 from .forms import EmailForm
 
@@ -35,14 +36,18 @@ def product3(request):
 def contact_us(request):
     if request.method == "POST" or None:
         form = EmailForm(request.POST or None)
-        print(request.POST)
         if form.is_valid():
-            print('POST successful - Form validated!')
-            print(send_email(request.POST))
+            send_email_response = send_email(request.POST)
+            if send_email_response == 'Email Sent':
+                messages.success(
+                    request, 'Thank you! Your request was submitted successfully.')
+            else:
+                error_message = 'An error occurred and the message was not sent. ' + send_email_response
+                messages.error(request, error_message)
             return HttpResponseRedirect('/contact-us')
         else:
-            print('Invalid entries on form! Error: ' +
-                  str(form.errors.as_json()))
+            messages.error(
+                request, 'Your message wasn\'t sent yet. Please, see entry errors below.')
             return render(request, 'contact-us.html', {'form': form})
     else:
         form = EmailForm()
@@ -51,49 +56,47 @@ def contact_us(request):
 
 def send_email(request):
 
-    # try:
-    file_path = Path(__file__).parent.resolve()
-    html = Template(
-        Path(f'{file_path}/email_content.html').read_text())
-    email = EmailMessage()
-    email['from'] = "test@knightskeep.com"
-    email['to'] = "admin@knightskeep.com"
-    email['subject'] = "From Contact Us Form"
+    try:
+        file_path = Path(__file__).parent.resolve()
+        html = Template(
+            Path(f'{file_path}/email_content.html').read_text())
+        email = EmailMessage()
+        email['from'] = "test@knightskeep.com"
+        email['to'] = "admin@knightskeep.com"
+        email['subject'] = "From Contact Us Form"
 
-    email_data = dict(request)
-    email_data.pop('csrfmiddlewaretoken')
+        email_data = dict(request)
+        email_data.pop('csrfmiddlewaretoken')
 
-    for key, item in email_data.items():
-        if key == 'name':
-            name = ''.join(item)
-        if key == 'email_address':
-            email_address = ''.join(item)
-        if key == 'phone':
-            phone = ''.join(item)
-        if key == 'message':
-            message = ''.join(item)
+        for key, item in email_data.items():
+            if key == 'name':
+                name = ''.join(item)
+            if key == 'email_address':
+                email_address = ''.join(item)
+            if key == 'phone':
+                phone = ''.join(item)
+            if key == 'message':
+                message = ''.join(item)
 
-    email_data.pop('name')
-    email_data.pop('email_address')
-    email_data.pop('phone')
-    email_data.pop('message')
+        email_data.pop('name')
+        email_data.pop('email_address')
+        email_data.pop('phone')
+        email_data.pop('message')
 
-    key_list = []
-    for key in email_data.keys():
-        key_list.append(key)
-    insurance = ', '.join(key_list)
+        key_list = []
+        for key in email_data.keys():
+            key_list.append(key)
+        insurance = ', '.join(key_list)
 
-    print(name, email_address, phone, message, insurance)
+        date_time = timezone.localtime().strftime("%m/%d/%Y %H:%M:%S (PT)")
+        email.set_content(html.substitute(name=name, email_address=email_address,
+                          phone=phone, insurance=insurance, message=message, sent=date_time), 'html')
+        with smtplib.SMTP_SSL(host='mail.knightskeep.com', port=465, timeout=30) as smtp:
+            smtp.ehlo()
+            smtp.login(os.getenv('USER_NAME'), os.getenv('PASS'))
+            smtp.send_message(email)
 
-    date_time = timezone.localtime().strftime("%m/%d/%Y %H:%M:%S (PT)")
-    email.set_content(html.substitute(name=name, email_address=email_address, phone=phone,
-                                      insurance=insurance, message=message, sent=date_time), 'html')
-    with smtplib.SMTP_SSL(host='mail.knightskeep.com', port=465, timeout=30) as smtp:
-        smtp.ehlo()
-        smtp.login(os.getenv('USER_NAME'), os.getenv('PASS'))
-        smtp.send_message(email)
+        return 'Email Sent'
 
-    return 'Email sent successfully!'
-
-    # except Exception as err:
-    #     return ('Something went wrong with send_mail. Error: ' + str(err))
+    except Exception as err:
+        return str(err)
