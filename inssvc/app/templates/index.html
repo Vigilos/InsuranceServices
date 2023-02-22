@@ -12,7 +12,7 @@
       <p id="main-paragraph">&emsp;Here will go a short parragraph about what you offer and why a client should go with you. The hero image grabs there attention and then this paragraph should hook them into continuing on the website. This paragraph should only be a few sentences, so as not to lose their interest.</p>
   </div>
     
-  <div class="d-flex flex-wrap flex-sm-row justify-content-around">
+  <div class="d-flex flex-wrap flex-sm-row justify-content-around mb-5">
 
     <div class="card m-3 bg-card-color text-dark border-dark card-size">
       <div class="card-body">
@@ -34,49 +34,6 @@
         <p class="card-text">Short description of the product, with a hook to get them to want more info or request a quote.</p>
         <a href="{% url 'product3' %}" class="card-link text-primary">Learn more...</a>
       </div>
-    </div>
-  </div>
-
-  <br/><br/><br/>
-
-  <div class="shadow border">
-
-    {% comment %} {% if form.errors %}
-      <div class="alert alert-danger">
-          {{ form.errors }}
-      </div>
-    {% endif %} {% endcomment %}
-
-    <div class="col-sm-4" id="contact-us">
-      <h3>Contact Us</h3>
-      <form method=POST action="{% url 'home' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <p>{{form.name.label}}:{{form.name}} {{form.name.errors|striptags}}</p>
-        <p>{{form.email_address.label}}:{{form.email_address}} {{form.email_address.errors|striptags}}</p>
-        <p>{{form.message.label}}:{{form.message}} {{form.message.errors|striptags}}</p>
-
-        {% comment %} {{form}} {% endcomment %}
-
-        {% comment %} <div class="form-group">
-          <label for="InputName">Name</label>
-          <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name">  
-          <input type="email" class="form-control" name="email_address" aria-describedby="email_address" placeholder="Email Address">  
-          <input type="text" class="form-control" name="message" aria-describedby="message" placeholder="Message">        
-        </div> {% endcomment %}
-
-        {% comment %} {% if form.errors %}
-          {% for field in form %}
-              {% for error in field.errors %} 
-                <div class="alert alert-danger">
-                      <strong>{{ error|escape }}</strong>
-                </div>
-              {% endfor %}
-          {% endfor %}
-        {% endif %} {% endcomment %}
-
-        <button>Submit</button>
-      </form>
     </div>
   </div>
 
