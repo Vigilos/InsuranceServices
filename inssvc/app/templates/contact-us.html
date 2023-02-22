@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+  
+{% block content %}
+  {% comment %} <img class="img-fluid w-100" src="https://via.placeholder.com/1200x200.png/bed2f2?text=Hero+Image" alt="New York"> {% endcomment %}
+  
+  <div class="container-fluid p-5 text-black text-center">
+    <div class="row">
+      <div class="shadow border py-4 col-xxl-4 col-xl-5 col-lg-6 col-md-6 col-sm-8 col-xs-8">
+        <h2>Contact Us</h2>
+ 
+        <div class="">
+          <form method=POST action="{% url 'contact-us' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            {% if form.errors %}
+              {% for field in form %}
+                  {% for error in field.errors %} 
+                    <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                    </div>
+                  {% endfor %}
+              {% endfor %}
+            {% endif %} 
+            
+            <div class="text-left">
+              <p class="mb-3">{{form.name.label}}:<br>{{form.name}}<span class="text-danger">{{form.name.errors|striptags}}</span></p>
+              <p class="mb-3">{{form.email_address.label}}:<br>{{form.email_address}}<span class="text-danger">{{form.email_address.errors|striptags}}</span></p>
+              <p class="mb-3">{{form.phone.label}}:<br>{{form.phone}}<span class="text-danger">{{form.phone.errors|striptags}}</span></p>
+              <p class="mb-2">What types of insurance are you looking for?</p>
+              <div class="d-flex flex-wrap mb-3 justify-content-around">
+
+                  <div class="px-2">{{form.workers_comp}} Workers' Comp<span class="text-danger">{{form.workers_comp.errors|striptags}}</span></div>
+                  <div class="px-2">{{form.general_liability}} General Liability<span class="text-danger">{{form.general_liability.errors|striptags}}</span></div>
+
+              </div>
+              <p class="mb-3">{{form.message.label}}:<br>{{form.message}}<span class="text-danger">{{form.message.errors|striptags}}</span></p> 
+            </div>
+
+            <button>Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    
+{% endblock content %}
+
+

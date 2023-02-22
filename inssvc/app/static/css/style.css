@@ -1,10 +1,13 @@
 #get-quote-link {
-  background-color: #E65002;
-  color: #ffffff;
+  background-color: #6396b8;
+  color: #000000;
   font-weight: bold;
 }
 .bg-color {
-  background-color: #f8a839;
+  background-color: #234c65;
+}
+.bg-color-dropdown {
+  background-color: #316281;
 }
 .bg-card-color {
   background-color: #f1ece4;
@@ -14,7 +17,7 @@
   height: 250px
 }
 .navbar a {
-  color: #434343;
+  color: #eef1f7;
 }
 #hero-text {  
   background-color: #525252;
@@ -41,12 +44,12 @@
 #footer h4 {
   font-size: large;
   font-weight: bold;
-  color: #434343;
+  color: #eef1f7;
 }
 #footer a {
-  color: #434343;
+  color: #eef1f7;
 }
 .copyright{
-  color: #fef5ed;
+  color: #c3cbd6;
   font-size: smaller;
 }
