@@ -1,0 +1,55 @@
+#get-quote-link {
+  background-color: #6396b8;
+  color: #000000;
+  font-weight: bold;
+}
+.bg-color {
+  background-color: #234c65;
+}
+.bg-color-dropdown {
+  background-color: #316281;
+}
+.bg-card-color {
+  background-color: #f1ece4;
+}
+.card-size {
+  width: 250px;
+  height: 250px
+}
+.navbar a {
+  color: #eef1f7;
+}
+#hero-text {  
+  background-color: #525252;
+  color: #ffffff;
+  opacity: 0.75;
+}
+#main-paragraph {
+  font-size: larger;
+  font-weight: 500;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+#content {
+  padding-bottom: 165px;    /* Footer height */
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 165px;
+}
+#footer h4 {
+  font-size: large;
+  font-weight: bold;
+  color: #eef1f7;
+}
+#footer a {
+  color: #eef1f7;
+}
+.copyright{
+  color: #c3cbd6;
+  font-size: smaller;
+}
