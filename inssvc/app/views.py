@@ -62,7 +62,7 @@ def send_email(request):
             Path(f'{file_path}/email_content.html').read_text())
         email = EmailMessage()
         email['from'] = "test@knightskeep.com"
-        email['to'] = "admin@knightskeep.com"
+        email['to'] = "joe@inssvc.com"
         email['subject'] = "From Contact Us Form"
 
         email_data = dict(request)
